@@ -7,13 +7,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View, ThreadCheckable {
+    @StateObject var viewModel = TestViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button("시 작") {
+
+                viewModel.body(.increment)
+            }
+            Button("결과 \(String(viewModel.state.a))") {
+                viewModel.body(.clear)
+            }
+        }
+        .onAppear {
+            viewModel.body(.onApear)
         }
         .padding()
     }
