@@ -12,10 +12,10 @@ struct ContentView: View, ThreadCheckable {
     
     var body: some View {
         VStack {
-            Button("시 작") {
+            Button("우선순위 시작") {
                 viewModel.body(.increment)
             }
-            Button("우선순위 시작") {
+            Button("데이터 레이스 시작") {
                 viewModel.body(.priority)
             }
             Button("결과 \(String(viewModel.state.a))") {
@@ -29,6 +29,8 @@ struct ContentView: View, ThreadCheckable {
     }
 }
 
+#if DEBUG
 #Preview {
     ContentView()
 }
+#endif
